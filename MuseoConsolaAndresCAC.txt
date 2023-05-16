@@ -1,0 +1,76 @@
+
+
+var museo = new object();
+
+Thread t1 = new Thread(Persona1);
+Thread t2 = new Thread(Persona2);
+Thread t3 = new Thread(Persona3);
+
+
+t1.Start();
+t2.Start();
+t3.Start();
+
+
+//se sincronizan
+t1.Join();
+t2.Join();
+t3.Join();
+
+
+void Persona1(object? obj)
+{
+    while (true)
+    {
+        Console.WriteLine("Persona 1 dice: Hola");
+        lock (museo)
+        {
+            Console.WriteLine("Persona 1: Entrando al museo...");
+            Console.WriteLine("Persona 1: Que bonito...");
+            Console.WriteLine("Persona 1: alucinante...");
+            Console.WriteLine("Persona 1: Adios...");
+        }
+        Console.WriteLine("Persona 1: Yendo a dar un paseo");
+        Thread.Sleep(1000);
+        Console.WriteLine("Persona 1: volviendo al museo");
+    }
+
+}
+
+void Persona2(object? obj)
+{
+    while (true)
+    {
+        Console.WriteLine("Persona 2 dice: Hola");
+        lock (museo)
+        {
+            Console.WriteLine("Persona 2: Entrando al museo...");
+            Console.WriteLine("Persona 2: Que bonito...");
+            Console.WriteLine("Persona 2: alucinante...");
+            Console.WriteLine("Persona 2: Adios...");
+        }
+        Console.WriteLine("Persona 2: Yendo a dar un paseo");
+        Thread.Sleep(1000);
+        Console.WriteLine("Persona 2: volviendo al museo");
+    }
+}
+
+
+
+void Persona3(object? obj)
+{
+    while (true)
+    {
+        Console.WriteLine("Persona 3 dice: Hola");
+        lock (museo)
+        {
+            Console.WriteLine("Persona 3: Entrando al museo...");
+            Console.WriteLine("Persona 3: Que bonito...");
+            Console.WriteLine("Persona 3: alucinante...");
+            Console.WriteLine("Persona 3: Adios...");
+        }
+        Console.WriteLine("Persona 3: Yendo a dar un paseo");
+        Thread.Sleep(1000);
+        Console.WriteLine("Persona 3: volviendo al museo");
+    }
+}
